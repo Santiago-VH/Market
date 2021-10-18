@@ -3,12 +3,15 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import exceptions.BadIdException;
+import model.IdManager;
 import model.Identification;
 
 public class Main {
 	
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
+		final IdManager manager;
 		Scanner sc = new Scanner(System.in);
 		
 
@@ -22,47 +25,39 @@ public class Main {
 		int totalClients=0;
 		switch(menuNumber){
 			case 1: 
-				totalClients++;
-				System.out.println("Select your ID type \n"
-									+ "1. TI \n"
-									+ "2. CC \n"
-									+ "3. PP \n"
-									+ "4. CE");
-				int idType0=sc.nextInt();
-				sc.nextLine();
-				idTypeCondition(idType0);
-				
-					System.out.println("Digit your ID \n");
-					
-					int id=sc.nextInt();
-					//String idLength = String.valueOf(id);
-					ArrayList<Identification> data=new ArrayList<Identification>();
-				break;
-			case 2: 
-				System.out.println("A total of "+ totalClients +" clients.");
-				break;
-			case 3: 
-				System.out.println("See you soon!");
-				break;
-				default: System.out.println("Please digit a number from 1 to 3 to use the program.");
-			}
-		}
-	
-	public static void idTypeCondition(int idType0) {
-		if(idType0 == 1) {
-			System.out.println("We can't register you because you're underage, please try when you're older.");
-		} else {
+			totalClients++;
+			System.out.println("Select your ID type \n"
+								+ "1. TI \n"
+								+ "2. CC \n"
+								+ "3. PP \n"
+								+ "4. CE");
+			int idType0=sc.nextInt();
+			sc.nextLine();
 			
-			String idType ="";
-			switch(idType0) {
-			case 2: idType="CC";
+			IdManager.idTypeCondition(idType);
+			
+				System.out.println("Digit your ID \n");
+				
+				int id=sc.nextInt();
+				
+				Identification data = new Identification(idType, id);
+				//ArrayList<Identification> data=new ArrayList<Identification>();
 			break;
-			case 3: idType="PP";
+		case 2: 
+			System.out.println("A total of "+ totalClients +" clients.");
 			break;
-			case 4: idType="CE";
+		case 3: 
+			System.out.println("See you soon!");
 			break;
-			}
+			default: System.out.println("Please digit a number from 1 to 3 to use the program.");
+		}
+		try {
+			manager.idTypeCondition(idType1);
+		}catch(BadIdException bie) {
+			
 		}
 	}
+	
+
 }
 	
