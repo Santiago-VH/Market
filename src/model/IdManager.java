@@ -3,7 +3,7 @@ package model;
 import exceptions.BadIdException;
 
 public class IdManager {
-	public static String idTypeCondition(int idType0, int id) throws BadIdException {
+	public static String idTypeCondition(int idType0) throws BadIdException {
 		String idType1=String.valueOf(idType0);
 		if(idType0 == 1) {
 			throw new BadIdException(idType0);

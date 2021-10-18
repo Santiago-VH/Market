@@ -9,9 +9,9 @@ import model.Identification;
 
 public class Main {
 	
-	public static void main(String[] args) {
+	@SuppressWarnings("static-access")
+	public static void main(String[] args, String idType1) throws BadIdException {
 		@SuppressWarnings("resource")
-		final IdManager manager;
 		Scanner sc = new Scanner(System.in);
 		
 
@@ -34,13 +34,21 @@ public class Main {
 			int idType0=sc.nextInt();
 			sc.nextLine();
 			
-			IdManager.idTypeCondition(idType);
+			IdManager.idTypeCondition(idType0);
 			
 				System.out.println("Digit your ID \n");
 				
 				int id=sc.nextInt();
 				
-				Identification data = new Identification(idType, id);
+				
+				
+				Identification data = new Identification(idType1, id);
+				data.getIdType1();
+				try {
+					IdManager.idTypeCondition(idType0);
+				}catch(BadIdException bie) {
+					
+				}
 				//ArrayList<Identification> data=new ArrayList<Identification>();
 			break;
 		case 2: 
@@ -50,12 +58,9 @@ public class Main {
 			System.out.println("See you soon!");
 			break;
 			default: System.out.println("Please digit a number from 1 to 3 to use the program.");
-		}
-		try {
-			manager.idTypeCondition(idType1);
-		}catch(BadIdException bie) {
 			
 		}
+
 	}
 	
 

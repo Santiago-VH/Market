@@ -2,11 +2,11 @@ package model;
 
 public class Identification {
 	private int id;
-	private String idType;
+	private String idType1;
 	
-	public Identification(String idType, int id) {
+	public Identification(String idType1, int id) {
 		this.id=id;
-		this.idType=idType;
+		this.idType1=idType1;
 	}
 
 	public int getId() {
@@ -17,12 +17,12 @@ public class Identification {
 		this.id = id;
 	}
 
-	public String getIdType() {
-		return idType;
+	public String getIdType1() {
+		return idType1;
 	}
 
-	public void setIdType(String idType) {
-		this.idType = idType;
+	public void setIdType1(String idType1) {
+		this.idType1 = idType1;
 	}
 	
 	

@@ -11,7 +11,4 @@ public class BadIdException extends Exception{
 		super("The id type can't be TI");
 	}
 
-	public String getIdType() {
-		
-	}
 }
